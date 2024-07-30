@@ -22,7 +22,7 @@ const Sidebar = () => {
     try {
       await axios.get("/api/users/logout");
     } catch (error: any) {
-     // console.error("message ", error.message);
+     console.error("message ", error.message);
       toast.error(error.message);
     }
   };
