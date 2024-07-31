@@ -13,12 +13,15 @@ export async function POST(req: NextRequest, res: NextResponse) {
   
       // Validate fields
       if (!email || !password) {
+        console.log('password is required em is required');
         return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
       }
   
       // Find the user by email
       const existingUser = await User.findOne({ email });
       if (!existingUser) {
+        console.log('existingUser is not found');
+
         return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
       }
   
@@ -46,7 +49,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
   
       // Return success response with user data (without password)
       const response  =  NextResponse.json({ message: 'Login successful', user: loggedInUser }, { status: 200 });
-
+      console.log(response);
     // Set token as a cookie in the response
     response.cookies.set('token', token, {
       httpOnly: true,

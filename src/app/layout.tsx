@@ -22,15 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <div className="flex h-screen">
-          <Sidebar />
-          <div className="flex flex-col flex-grow">
-            <Header />
-            <main className="flex-grow p-4 overflow-auto">
+      
               {children}
-            </main>
-          </div>
-        </div>
+          
       </body>
     </html>
   );

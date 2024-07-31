@@ -16,11 +16,18 @@ import {
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { BsPlusCircleFill } from "react-icons/bs";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
+    const router = useRouter();
+
   const logout = async () => {
     try {
-      await axios.get("/api/users/logout");
+        console.log('logout');
+        const response =   await axios.get("/api/users/logout");
+      toast.error("Logged out successfully");
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      router.push("/login");
     } catch (error: any) {
      console.error("message ", error.message);
       toast.error(error.message);
@@ -35,11 +42,11 @@ const Sidebar = () => {
           <span className="text-gray-900 text-3xl">
             <IoPersonCircleOutline />
           </span>
-          <span className="ml-2  text-black font-bold">Joe Gardner</span>
+          <span className="ml-2  text-black font-bold">himanshu Saini</span>
         </div>
         <button
           onClick={logout}
-          className="px-2 py-1 text-bold  text-gray-600  border-gray-300 rounded hover:bg-gray-200 bg-gray-300 "
+          className="px-2 py-1 font-bold  text-gray-600  border-gray-300 rounded hover:bg-gray-200 bg-gray-300 "
         >
           Logout
         </button>
