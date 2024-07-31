@@ -2,7 +2,11 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb+srv://hims:hims@cluster0.nghvgcd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+        const conn = process.env.MONGO_URL;
+        if (!conn) {
+            throw new Error('MongoDB connection URL is undefined');
+        }
+        await mongoose.connect(conn, {
             
         });
 

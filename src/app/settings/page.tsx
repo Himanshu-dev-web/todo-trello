@@ -1,6 +1,6 @@
 // app/dashboard/page.tsx
 import React from "react";
-import Layout from "@/app/page";
+import Layout from "../../app/page";
 
 export default function settings() {
   return (
